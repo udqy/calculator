@@ -19,3 +19,9 @@ function operator(operator,a,b) {
     if (operator == '/') return divide(a,b);
     else return "Incorrect operator, try again";
 }
+
+//interact with index.html
+const screen = document.querySelector('#screen');
+let key = document.querySelector('.number')
+let val = key.getAttribute('value')
+console.log(val)
