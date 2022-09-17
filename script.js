@@ -23,7 +23,18 @@ function operator(operator,a,b) {
 //interact with index.html
 
 //1. append value to the screen
-const screen = document.querySelector('#screen');
-let key = document.querySelector('.number')
-let val = key.getAttribute('value')
-console.log(val)
+const screen = document.querySelector('.screen');
+const keys = document.querySelector('.grid');
+
+keys.addEventListener('click', event => {
+    if (!event.target.closest('button')) return;
+    const key = event.target;
+    const keyVal = key.textContent;
+    const screenVal = screen.textContent
+    
+    if (screen.textContent===0) {
+        screen.textContent=keyVal
+    }  else {
+        screen.textContent=screenVal+keyVal;
+    }
+})
