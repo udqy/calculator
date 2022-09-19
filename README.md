@@ -2,4 +2,4 @@
 
 This was an assignment submission for The Odin Project!
 
-[Live Demo](udqy.github.io/calculator)
+[Live Demo](https://udqy.github.io/calculator/)
