@@ -1,30 +1,122 @@
+html {
+    font-size: 150%;
+    font-weight: 300;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    line-height: 1.4;
+  }
+  
 body {
     display: flex;
+    background-image: linear-gradient(140deg,  #ffc052, #ffffff);
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
+    height: 100vh;
 }
 
-.container {
-    border: 2px solid black;
-    width: 20%;
-    padding: 20px;
-    height: fit-content;
-}
-
+.calculator {
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 0.5em;
+    overflow: hidden;
+  }
+  
 .screen {
-    background-color: antiquewhite;
-    border: 1px solid black;
-    padding: 20px;
-    margin-bottom: 20px;
-
-    display: flex;
-    flex-direction: row-reverse;
+    background-color: rgb(42, 42,42);
+    color: white;
+    width: 16.25rem;
+    padding: 0.75rem 1rem;
+    text-align: right;
+    font-size: calc(1rem * 1.2 * 1.2);
 }
-
-.grid {
+  
+.key-container {
+    background: var(--grey-200);
     display: grid;
-    grid-template-columns: repeat(3, 0.8fr) 1fr;
-    gap: 5px;
-    grid-template-rows: repeat(4, 50px);
+    grid-gap: 2px;
+    grid-template-columns: repeat(4, auto);
+    grid-template-areas:
+      ". . . ."
+      "seven eight nine equal"
+      "four five six equal"
+      "one two three equal"
+      "zero decimal clear equal";
+}
+  
+.key-container > button {
+    border: 0;
+    padding: 20px;
+    border-radius: 3px;
+}
+  
+[data-key="1"] {
+    grid-area: one;
+}
+  
+[data-key="2"] {
+    grid-area: two;
+}
+  
+[data-key="3"] {
+    grid-area: three;
+}
+  
+[data-key="4"] {
+    grid-area: four;
+}
+  
+[data-key="5"] {
+    grid-area: five;
+}
+  
+[data-key="6"] {
+    grid-area: six;
+}
+  
+[data-key="7"] {
+    grid-area: seven;
+}
+  
+[data-key="8"] {
+    grid-area: eight;
+}
+  
+[data-key="9"] {
+    grid-area: nine;
+}
+  
+[data-key="0"] {
+    grid-area: zero;
+}
+  .decimal {
+    grid-area: decimal;
+}
+  .clear {
+    grid-area: clear;
+}
+  
+[data-key="equal"] {
+    grid-area: equal;
+    background-color: rgb(255, 211, 130);
+}
+  
+[data-key="equal"]:active {
+    background-color: orange;
+}
+  
+[data-type="operator"] {
+    background: orange;
+}
+  
+[data-type="number"],
+[data-type="clear"] {
+    background: #fff;
+}
+  
+[data-type="operator"]:active,
+[data-type="number"]:active,
+[data-type="clear"]:active {
+    background: rgba(128, 128, 128, 0.445);
+}
+  
+[data-state="selected"] {
+    background: rgba(255, 166, 0, 0.618);
 }
