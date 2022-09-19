@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
-        <div id="screen" class="screen"></div>
-        <div class="key-container grid">
-            <button id="1" class="key number" value="1">1</button>
-            <button id="2" class="key number" value="2">2</button>
-            <button id="3" class="key number" value="3">3</button>
-            <button id="plus" class="key operator" value="+">+</button>
-            <button id="4" class="key number" value="4">4</button>
-            <button id="5" class="key number" value="5">5</button>
-            <button id="6" class="key number" value="6">6</button>
-            <button id="minus" class="key operator" value="-">-</button>
-            <button id="7" class="key number" value="7">7</button>
-            <button id="8" class="key number" value="8">8</button>
-            <button id="9" class="key number" value="9">9</button>
-            <button id="multi" class="key operator" value="*">*</button>
-            <button id="0" class="key number" value="0">0</button>
-            <button id="Clear" class="key func">Clear</button>
-            <button id="equals" class="key func">=</button>
-            <button id="divide" class="key operator" value="/">/</button>
+      <div class="calculator">
+        <div class="screen">0</div>
+        <div class="key-container">
+          <button data-key="plus" data-type="operator">+</button>
+          <button data-key="minus" data-type="operator">-</button>
+          <button data-key="times" data-type="operator">&times;</button>
+          <button data-key="divide" data-type="operator">÷</button>
+          <button data-key="1" data-type="number">1</button>
+          <button data-key="2" data-type="number">2</button>
+          <button data-key="3" data-type="number">3</button>
+          <button data-key="4" data-type="number">4</button>
+          <button data-key="5" data-type="number">5</button>
+          <button data-key="6" data-type="number">6</button>
+          <button data-key="7" data-type="number">7</button>
+          <button data-key="8" data-type="number">8</button>
+          <button data-key="9" data-type="number">9</button>
+          <button data-key="0" data-type="number">0</button>
+          <button class="decimal" data-type="number">.</button>
+          <button class="clear" data-type="clear">C</button>
+          <button data-key="equal" data-type="equal">=</button>
         </div>
+      </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
