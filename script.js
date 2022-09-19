@@ -1,40 +1,62 @@
-//create operators
-function add(a,b) { return Math.round((a+b)*100)/100; };
+//const declaration
+const calculator = document.querySelector('.calculator')
+const keys = calculator.querySelector('.key-container')
+const display = calculator.querySelector('.screen')
+const operatorKeys = keys.querySelectorAll('[data-type="operator"]')
 
-function subtract(a,b) { return Math.round((a-b)*100)/100; };
-
-function multiply(a,b) { return Math.round((a*b)*100)/100; }; 
-
-function divide(a,b) {
-    if (a===0) return 'undefined';
-    if (b===0) return 'undefined';
-    return Math.round((a/b)*100)/100;
-};
-
-//the main function
-function operator(operator,a,b) {
-    if (operator == '+') return add(a,b);
-    if (operator == '-') return subtract(a,b);
-    if (operator == '*') return multiply(a,b);
-    if (operator == '/') return divide(a,b);
-    else return "Incorrect operator, try again";
-}
-
-//interact with index.html
-
-//1. append value to the screen
-const screen = document.querySelector('.screen');
-const keys = document.querySelector('.grid');
-
+//main event listener
 keys.addEventListener('click', event => {
-    if (!event.target.closest('button')) return;
-    const key = event.target;
-    const keyVal = key.textContent;
-    const screenVal = screen.textContent
-    
-    if (screen.textContent===0) {
-        screen.textContent=keyVal
-    }  else {
-        screen.textContent=screenVal+keyVal;
+  if (!event.target.closest('button')) return
+
+  const key = event.target
+  const keyValue = key.textContent
+  const displayValue = display.textContent
+  const { type } = key.dataset
+  const { previousKeyType } = calculator.dataset
+
+  if (type === 'number') {
+    if (
+      displayValue === '0' ||
+      previousKeyType === 'operator'
+    ) {
+      display.textContent = keyValue
+    } else {
+      display.textContent = displayValue + keyValue
     }
+  }
+
+  if (type === 'operator') {
+    operatorKeys.forEach(el => { el.dataset.state = '' })
+    key.dataset.state = 'selected'
+
+    calculator.dataset.firstNumber = displayValue
+    calculator.dataset.operator = key.dataset.key
+  }
+
+  if (type === 'equal') {
+    const firstNumber = calculator.dataset.firstNumber
+    const operator = calculator.dataset.operator
+    const secondNumber = displayValue
+    display.textContent = operate(firstNumber, operator, secondNumber)
+  }
+
+  if (type === 'clear') {
+    display.textContent = '0'
+    delete calculator.dataset.firstNumber
+    delete calculator.dataset.operator
+  }
+
+  calculator.dataset.previousKeyType = type
 })
+
+
+//the operate function
+function operate (firstNumber, operator, secondNumber) {
+  firstNumber = parseInt(firstNumber)
+  secondNumber = parseInt(secondNumber)
+
+  if (operator === 'plus') return firstNumber + secondNumber;
+  if (operator === 'minus') return firstNumber - secondNumber;
+  if (operator === 'times') return firstNumber * secondNumber;
+  if (operator === 'divide') return firstNumber / secondNumber;
+}
