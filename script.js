@@ -6,7 +6,7 @@ const operatorKeys = keys.querySelectorAll('[data-type="operator"]')
 
 //main event listener
 keys.addEventListener('click', event => {
-  if (!event.target.closest('button')) return
+  if (!event.target.closest('button')) return; //clicks the closest button when you click in the grid gap
 
   const key = event.target
   const keyValue = key.textContent
@@ -40,6 +40,7 @@ keys.addEventListener('click', event => {
     display.textContent = operate(firstNumber, operator, secondNumber)
   }
 
+  //clears screen
   if (type === 'clear') {
     display.textContent = '0'
     delete calculator.dataset.firstNumber
@@ -50,7 +51,7 @@ keys.addEventListener('click', event => {
 })
 
 
-//the operate function
+//performs the calculations
 function operate (firstNumber, operator, secondNumber) {
   firstNumber = parseInt(firstNumber)
   secondNumber = parseInt(secondNumber)
