@@ -46,7 +46,8 @@ body {
     padding: 20px;
     border-radius: 3px;
 }
-  
+ 
+/*Allocate grid area*/
 [data-key="1"] {
     grid-area: one;
 }
@@ -86,13 +87,16 @@ body {
 [data-key="0"] {
     grid-area: zero;
 }
-  .decimal {
+
+.decimal {
     grid-area: decimal;
 }
-  .clear {
+
+.clear {
     grid-area: clear;
 }
   
+
 [data-key="equal"] {
     grid-area: equal;
     background-color: rgb(255, 211, 130);
